@@ -23,7 +23,7 @@ export class StudentController {
 ```
 
 Looks nice, eh?
-Unfortunatly, it won't work. The reflected metadata used in the [ValidationPipe](https://docs.nestjs.com/techniques/validation) only knows how to cast to one class.
+Unfortunately, it won't work. The reflected metadata used in the [ValidationPipe](https://docs.nestjs.com/techniques/validation) only knows how to cast to one class.
 It can't discriminate the data and guess which of the classes to use for validation.
 
 Ok, first thing first, let's define the DTOs:
@@ -60,7 +60,7 @@ export class OnlineStudentDto extends StudentDto {
 
 ![wonderful](https://media.giphy.com/media/xT1XGXgGPvHCBc2XsY/giphy.gif)
 
-So, how can we compensate this limitations?
+So, how can we compensate for these limitations?
 Easy! use setup our own transform pipe in the `@Body()` annotation
 
 ```ts
@@ -101,7 +101,7 @@ export class StudentController {
         return transformed;
       },
     })
-    signupDto: CollegeStudentDto | OnlineStudentDto,
+      signupDto: CollegeStudentDto | OnlineStudentDto,
   ) {
     if (signupDto instanceof CollegeStudentDto) {
       return 'college student';
@@ -111,7 +111,7 @@ export class StudentController {
   }
 }
 ```
-And that's it! 
+And that's it!
 Now you know!
 
 ## Questions?
@@ -127,6 +127,6 @@ You can also email me and offer me a contract :moneybag:
 :envelope:[Email me!](julien@webeleon.dev)
 
 And since I'm a nice guy, here, take this sample repo containing a working codebase!
-:gift:[Get the code of the tuto from github](https://github.com/Webeleon/validating-a-polymorphi-body-in-nestjs)
+:gift:[Get the code of the tuto from github](https://github.com/Webeleon/validating-a-polymorphic-body-in-nestjs)
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="webeleon" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
